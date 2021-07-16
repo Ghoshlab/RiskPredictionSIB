@@ -42,7 +42,7 @@ Xmat <- cbind(sln.new$Age,pmax(sln.new$Age-33,0)^3,pmax(sln.new$Age-56,0)^3,
               pmax(sln.new$BD-1.8,0)^3,pmax(sln.new$BD-5.5,0)^3)
 
 
-# nonnegative ridge regression
+# nonnegative ridge regression with Kattan constraints
 library(nnls)
 lambda <- 10
 newXmat <- cbind(Xmat,sqrt(lambda)*diag(1,2000,2000))
@@ -65,7 +65,7 @@ Xmat <- cbind(I(sln.new$BD >= 1 &sln.new$BD <= 2 ),
               I(sln.new$BD > 2 &sln.new$BD <= 4 ),
               I(sln.new$BD > 4))
 
-# nonnegative ridge regression
+# nonnegative ridge regression with Tejera-Vaquerizo constraints
 library(nnls)
 lambda <- 10
 newXmat <- cbind(Xmat,sqrt(lambda)*diag(1,2000,2000))
